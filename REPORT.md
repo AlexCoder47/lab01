@@ -10,47 +10,44 @@
 
 ## Tutorial
 
+1. Сохранение параметров и создание директорий для дальнейшей работы.
+
 ```bash
 $ export GITHUB_USERNAME=AlexCoder47
 $ export GIST_TOKEN=<сохраненный_токен>
 $ alias edit=nano
-
-
 $ mkdir -p ${GITHUB_USERNAME}/workspace
 $ cd ${GITHUB_USERNAME}/workspace
-```
-
-```sh
 $ pwd
 /home/alexc/AlexCoder47/workspace
-```
 
-```sh
 $ cd ..
-```
-
-```sh
 $ pwd
 /home/alexc/AlexCoder47
-```
 
-```sh
 $ mkdir -p workspace/tasks/
 $ mkdir -p workspace/projects/
 $ mkdir -p workspace/reports/
 $ cd workspace
 ```
 
+2. Загрузка библиотеки node.js.
+
 ```sh
 $ wget https://nodejs.org/dist/v6.11.5/node-v6.11.5-linux-x64.tar.xz
-https://gist.github.com/AlexCoder47/28adfe85185ac59a6eac399ab995651b/edit
 ```
+[Вывод команды](https://gist.github.com/AlexCoder47/28adfe85185ac59a6eac399ab995651b)
+
+
+3. Разархивация и перемещение скачанной библиотеки в директорию `node`.
 
 ```sh
 $ tar -xf node-v6.11.5-linux-x64.tar.xz
 $ rm -rf node-v6.11.5-linux-x64.tar.xz
 $ mv node-v6.11.5-linux-x64 node
 ```
+
+4. Установка node в качестве глобальной переменной.
 
 ```sh
 $ ls node/bin
@@ -93,22 +90,23 @@ $ gist REPORT.md
 
 ## Homework
 
-1. Скачайте библиотеку *boost* с помощью утилиты **wget**. Адрес для скачивания `https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz`.
+1. Скачивание библиотеки *boost* с помощью утилиты **wget**.
 
 ```sh
 $ wget https://sourceforge.net/projects/boost/files/boost/1.69.0/boost_1_69_0.tar.gz
-https://gist.github.com/AlexCoder47/647a21d6d0e8355915112743124079fd
 ```
+[Вывод команды](https://gist.github.com/AlexCoder47/647a21d6d0e8355915112743124079fd)
 
-2. Разархивируйте скаченный файл в директорию `~/boost_1_69_0`
+2. Разархивация скачанного файла в директорию `~/boost_1_69_0`
 
 ```sh
 $ mkdir ~/boost_1_69_0
 $ tar -xvzf boost_1_69_0.tar.gz -C boost_1_69_0
-https://gist.github.com/AlexCoder47/d1aa53e606a9271e8fb5c1299c99e841
 ```
+[Вывод команды](https://gist.github.com/AlexCoder47/d1aa53e606a9271e8fb5c1299c99e841)
 
-3. Подсчитайте количество файлов в директории `~/boost_1_69_0` **не включая** вложенные директории.
+
+3. Подсчет количества файлов в директории `~/boost_1_69_0` **не включая** вложенные директории.
 
 ```sh
 $ cd boost_1_69_0/boost_1_69_0
@@ -116,14 +114,14 @@ $ find -maxdepth 1 -type f | wc -l
 12
 ```
 
-4. Подсчитайте количество файлов в директории `~/boost_1_69_0` **включая** вложенные директории.
+4. Подсчет количества файлов в директории `~/boost_1_69_0` **включая** вложенные директории.
 
 ```sh
 $ find -type f | wc -l
 61191
 ```
 
-5. Подсчитайте количество заголовочных файлов, файлов с расширением `.cpp`, сколько остальных файлов (не заголовочных и не `.cpp`).
+5. Подсчет количества заголовочных файлов, файлов с расширением `.cpp`, остальных файлов (не заголовочных и не `.cpp`).
 
 ```sh
 $ find -type f -name "*.h" | wc -l
@@ -139,7 +137,7 @@ $ find -type f ! -name "*.hpp" ! -name "*.cpp" ! -name "*.h" | wc -l
 32209
 ```
 
-6. Найдите полный пусть до файла `any.hpp` внутри библиотеки *boost*.
+6. Поиск полного пути до файла `any.hpp` внутри библиотеки *boost*.
 
 ```sh
 $ find -type f -iname "any.hpp"
@@ -155,35 +153,42 @@ $ find -type f -iname "any.hpp"
 ./boost/fusion/include/any.hpp
 ```
 
-7. Выведите в консоль все файлы, где упоминается последовательность `boost::asio`.
+7. Вывод в консоль всех файлов, где упоминается последовательность `boost::asio`.
 
 ```sh
 $ grep -r "boost::asio"
-https://gist.github.com/AlexCoder47/ce1bbafd3e2fa06fad360e04862494ca
 ```
+[Вывод команды](https://gist.github.com/AlexCoder47/ce1bbafd3e2fa06fad360e04862494ca)
 
-8. Скомпилирутйе *boost*. Можно воспользоваться [инструкцией](https://www.boost.org/doc/libs/1_61_0/more/getting_started/unix-variants.html#or-build-custom-binaries) или [ссылкой](https://codeyarns.com/2017/01/24/how-to-build-boost-on-linux/).
+
+8. Компиляция *boost*.
 
 ```sh
 $ ./bootstrap.sh --prefix=boost_output
-https://gist.github.com/AlexCoder47/d26f841f8d08b7c05adf7f93e31867b7
-
-$ ./b2 install -j 12
-https://gist.github.com/AlexCoder47/916be55f2acef5b4a126d6c67f6542f2
 ```
+[Вывод команды](https://gist.github.com/AlexCoder47/d26f841f8d08b7c05adf7f93e31867b7)
 
-9. Перенесите все скомпилированные на предыдущем шаге статические библиотеки в директорию `~/boost-libs`.
+
+```sh
+$ ./b2 install -j 12
+```
+[Вывод команды](https://gist.github.com/AlexCoder47/916be55f2acef5b4a126d6c67f6542f2)
+
+
+9. Перенос всех скомпилированных на предыдущем шаге статических библиотек в директорию `~/boost-libs`.
 
 ```sh
 $ mv boost_output/lib/ ~/boost-libs/
 ```
-10. Подсчитайте сколько занимает дискового пространства каждый файл в этой директории.
+10. Подсчет того, сколько занимает дискового пространства каждый файл в этой директории.
 
 ```sh
 $ find . -type f -exec du -h {} +
-https://gist.github.com/AlexCoder47/0c9b071eb45a0bd7195666da2857295b
 ```
-11. Найдите *топ10* самых "тяжёлых".
+[Вывод команды](https://gist.github.com/AlexCoder47/0c9b071eb45a0bd7195666da2857295b)
+
+
+11. Поиск *топ10* самых "тяжёлых".
 
 ```sh
 $ find . -type f -exec du -h {} +|sort -rh | head -n 10
@@ -197,8 +202,4 @@ $ find . -type f -exec du -h {} +|sort -rh | head -n 10
 2,7M    ./libs/asio/doc/reference.qbk
 2,7M    ./libs/algorithm/test/search_test_data/0001.corpus
 2,7M    ./bin.v2/libs/math/build/gcc-13.2.1/release/link-static/threading-multi/visibility-hidden/libboost_math_tr1l.a
-```
-
-```
-Copyright (c) 2015-2021 The ISC Authors
 ```
